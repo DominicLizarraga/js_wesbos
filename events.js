@@ -26,21 +26,50 @@ const buyButtons = document.querySelectorAll('.buy')
 //     buyButton.addEventListener('click', gotClicked)
 // })
 
-function starFound() {
-    console.log('⭐️✨')
-}
+// function starFound() {
+//     console.log('⭐️✨')
+// }
 
-function handleBuyButton(btn) {
-    btn.addEventListener('click', starFound)
-}
+// function handleBuyButton(btn) {
+//     btn.addEventListener('click', starFound)
+// }
 
 const allButtons = document.querySelectorAll('.buy')
 
-allButtons.forEach(handleBuyButton)
+// allButtons.forEach(handleBuyButton)
 
 
-allButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        console.log('💎')
-    })
-}) // with arrow functions
+// allButtons.forEach((button) => {
+//     button.addEventListener('click', () => {
+//         console.log('💎')
+//     })
+// }) // with arrow functions
+
+function handleBuyButtonClick(event) {
+    // console.log("you're buying")
+    // console.log(event)
+    // console.log(event.target)
+    // console.log(event.target.dataset)
+    //  console.log(event.target.dataset.price)
+    const button = event.target;
+    console.log(button.textContent)
+    // to stop event bubbling up
+    event.stopPropagation();
+}
+
+
+allButtons.forEach(function(btn) {
+    btn.addEventListener('click', handleBuyButtonClick)
+})
+
+window.addEventListener('click', function() {
+    console.log('YOU CLICKED THE WINDOW!')
+})
+
+const photo = document.querySelector('.photo')
+// console.log(photo)
+
+photo.addEventListener('mousemove', function(e) {
+    // console.count(e.currentTarget)
+    console.log(this)
+})
