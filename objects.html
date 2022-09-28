@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object reference vs values</title>
+  <link rel="stylesheet" href="../../base.css">
+    
+</head>
+
+<body>
+
+    <script src="https://unpkg.com/lodash"></script>
+    <script>
+        // console.log('works')
+        // when we check with 3 === it checks type in this case String and also the value
+        let name1 = 'wes'
+        let name2 = 'wes'
+        console.log(name1 === name2) // true
+        name1 = 'scott'
+        console.log(name1 === name2) // false
+        // updating name1 to what name2 is
+        name1 = name2
+        console.log(name1 === name2) // true
+
+
+        // now with objects, it means that the comparisson is made to the object itself not the values
+        const person1 = {
+            name: 'wes',
+            last: 'bos',
+        }
+
+        const person2 = {
+            name: 'wes',
+            last: 'bos',
+        }
+
+        console.log(person1 === person2) // false
+
+
+        const person3 = person1
+        person3.name = 'Larry'
+        console.log(person3.name)// Larry
+        console.log(person1.name)// Larry, this happens because of the line 38 we are pointing out to a original, not a copy
+
+
+        //ways of doing a copy VERY IMPORTANT
+
+        const person4 = {...person1}
+        // const person3 = Object.assign({}, person1)
+        console.log(person4.name = 'Larry')// Larry
+        console.log(person1.name = 'Larry')// wes
+
+
+        // for deeper level because the prior 2 methods only work for 1 level deep
+        const person5 = _.cloneDeep(person1)
+
+        // bring the lodash package
+
+
+
+
+        // another example
+
+        const meatInvetory = {
+            bacon: 2,
+            meat: 12,
+        }
+
+
+        const veggieInvetory = {
+            brocolee: 7,
+            celery: 1,
+        }
+
+        const inventory = {...meatInvetory, ...veggieInvetory}
+
+        console.log(inventory)
+
+        function doStuff(data) {
+            data.tomatoes = 10000
+        }
+
+        doStuff(inventory)
+        console.log(inventory)
+
+
+    </script>
+</body>
+</html>
