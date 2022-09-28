@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../base.css">
+
+</head>
+<body>
+
+    <ul class="prizes">
+
+    </ul>
+    <script>
+        // console.log('looking good')
+        const person1 = {
+            name: 'wes',
+            age: 120,
+        }
+
+        const myMap = new Map()
+        // .set
+        // first value is the key, second is the value
+        // also with Map the order is kept not like objects
+        myMap.set('name', 'wes')
+        myMap.age = 100 // it's printed outside
+        myMap.set(100, "it is a number") // allows us to put any kind of type as key
+        console.log(myMap) // entries are values in the Map
+        // .get
+        myMap.set(person1, "you're old maaan") // you can store an objet itself
+
+        console.log(myMap.get(person1))
+
+        // another example
+
+        const score = 200
+        const prizes = new Map()
+        prizes.set(100, 'fish')
+        prizes.set(200, 'dog')
+        prizes.set(400, 'bear')
+
+        const statment = `you've won a prize of ${prizes.get(score)}`
+        console.log(statment)
+        // .has
+
+        // .delete
+        const list = document.querySelector('.prizes')
+        // console.log(list)
+        for(const [points, prize] of prizes) {
+            const li = `<li>
+                        ${prize} - ${points}
+                        </li>`
+            list.insertAdjacentHTML('afterbegin', li)
+        }
+    </script>
+</body>
+</html>
