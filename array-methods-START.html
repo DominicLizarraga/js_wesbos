@@ -36,7 +36,7 @@
       { comment: 'Horrible Service', rating: 2 },
       { comment: 'Smoothies are great, liked the burger too', rating: 5 },
       { comment: 'Ambiance needs work', rating: 3 },
-      { comment: 'I DONT LIKE BURGERS', rating: 1 },
+      { comment: 'I DONT LOVE BURGERS', rating: 1 },
     ];
 
     console.log('lol')
@@ -152,11 +152,52 @@
     */
 
     // find the first rating that talks about a burger with find()
+    const findBurgerComment = feedback.find(word => {
+        return word.comment.includes('burg')
+    })
+    // console.log(findBurgerComment)
+
+    function burgerRating(singleFeedback, i, array) {
+        console.log(singleFeedback.comment.includes('burg'))
+    }
+
+    console.log(feedback.find(burgerRating))
+
+    function findByWord(word) {
+        return function(singleFeedback) {
+             return singleFeedback.comment.includes(word)
+        }
+    }
+    const burg = feedback.find(findByWord('burg'))
+    const love = feedback.find(findByWord('LOVE'))
+
+    console.log(burg)
+    console.log(love)
+
     // find all ratings that are above 2 with filter()
+
+    function allAbove(minRating) {
+        return function(singleFeedback) {
+            return singleFeedback.rating > minRating
+
+        }
+    }
+
+    const ratings = feedback.filter(allAbove(2))
+    console.table(ratings)
     // find all ratings that talk about a burger with filter()
     // Remove the one star rating however you like!
+    function findRating(rating) {
+        return function(singleFeedback) {
+            return singleFeedback.rating > rating
+        }
+    }
+
+    console.table(feedback.filter(findRating(4)))
 
     // check if there is at least 5 of one type of meat with some()
+
+
     // make sure we have at least 3 of every meat with every()
     // sort the toppings alphabetically with sort()
     // sort the order totals from most expensive to least with .sort()
