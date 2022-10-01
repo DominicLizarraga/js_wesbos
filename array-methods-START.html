@@ -157,9 +157,23 @@
     })
     // console.log(findBurgerComment)
 
-    function burgerRating(singleFeedback, i, array) {
-        console.log(singleFeedback.comment.includes('burg'))
+    function burgerRating(singleFeedback) {
+        return singleFeedback.comment.includes('work')
     }
+
+    console.log(feedback.find(burgerRating))
+    
+    const burgerRating2 = (singleFeedback) => {
+        return singleFeedback.comment.includes('Love')
+    }
+
+    console.log(feedback.find(burgerRating2))
+    
+    const burgerRating3 = function(singleFeedback) {
+        return singleFeedback.comment.includes('liked')
+    }
+
+    console.log(feedback.find(burgerRating3))
 
     console.log(feedback.find(burgerRating))
 
@@ -186,6 +200,10 @@
     const ratings = feedback.filter(allAbove(2))
     console.table(ratings)
     // find all ratings that talk about a burger with filter()
+
+    const filterByWord = feedback.filter(findByWord('burg'))
+    console.log(filterByWord)
+
     // Remove the one star rating however you like!
     function findRating(rating) {
         return function(singleFeedback) {
@@ -193,13 +211,32 @@
         }
     }
 
-    console.table(feedback.filter(findRating(4)))
+    console.log(feedback.filter(findRating(3)))
 
     // check if there is at least 5 of one type of meat with some()
 
+    function someElements(el) {
+        return function() {
+            return el >= 5
+        }
+    }
+    
+    const array = Object.values( meats )
 
+    console.log(array.some(someElements))
+    
     // make sure we have at least 3 of every meat with every()
+
+    const array = Object.values(meats).every(el => {
+        console.log(el)
+        return el >= 3
+    })
+
+    console.log(array)
+
     // sort the toppings alphabetically with sort()
+
+
     // sort the order totals from most expensive to least with .sort()
     // Sort the prices with sort()
 
