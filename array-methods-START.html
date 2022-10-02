@@ -227,23 +227,41 @@
     
     // make sure we have at least 3 of every meat with every()
 
-    const array = Object.values(meats).every(el => {
+    const array2 = Object.values(meats).every(el => {
         console.log(el)
         return el >= 3
     })
 
-    console.log(array)
+    console.log(array2)
 
     // sort the toppings alphabetically with sort()
-
+    const toppingsOrdered = toppings.sort()
+    console.log(toppingsOrdered)
 
     // sort the order totals from most expensive to least with .sort()
+    function orderTotal(a, b) {
+        return a - b
+    }
+
+    console.log(orderTotals.sort(orderTotal))
+    
     // Sort the prices with sort()
+    const fromMostExpensiveToLessExpensive = Object.entries(prices).sort(function (firstItem, secondItem) {
+        // debugger;
+        const aPrice = firstItem[1]
+        const bPrice = secondItem[1]
+        return secondItem[1] - firstItem[1]
+
+    })
+    console.table(fromMostExpensiveToLessExpensive)
+    console.table(Object.fromEntries(fromMostExpensiveToLessExpensive))
+
+
 
     /*
       Looping Methods (next)
     */
-
+    
   </script>
 </body>
 
